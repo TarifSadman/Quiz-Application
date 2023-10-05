@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Alert, Spin, Row, Col, Typography } from "antd";
-import questions from "../data/queses"; // Assuming you have your questions data
+import { Alert, Spin, Row, Col, Typography, Divider } from "antd";
+import questions from "../data/queses";
 import Question from "./ques";
 import "./quiz.css";
 
@@ -14,6 +14,7 @@ const Quiz = () => {
     Array(questions.length).fill(false)
   );
   const [timer, setTimer] = useState(null);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -41,7 +42,9 @@ const Quiz = () => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setShowCorrectAnswerAlert(false);
       } else {
-        alert(`Quiz completed! Your score: ${score}/${questions.length}`);
+        if (currentQuestionIndex === questions.length - 1) {
+          setQuizCompleted(true);
+        }
       }
       setTimer(null);
     }, 2000);
@@ -58,54 +61,65 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
-      <Row justify="center" align="middle" className="quiz-header">
-        <Col span={24}>
-          <Title level={3}>Quiz App</Title>
-        </Col>
-      </Row>
-      <Row justify="center" align="middle" className="quiz-content">
-      <Row justify="space-between" align="middle" gutter={16}>
-            <Col>
-              <Text strong>Question {currentQuestionIndex + 1}/{questions.length}</Text>
-            </Col>
-            <Col>
-              <Text strong>Score: {score}</Text>
-            </Col>
-          </Row>
-        {timer === null ? (
+      {quizCompleted ? (
+        <div className="completion-message">
+          <Title level={3}>Quiz Completed!</Title>
+          <Text>Your score: {score}/{questions.length}</Text>
+        </div>
+      ) : (
+        <Row justify="center" align="middle" className="quiz-content">
           <Col span={24}>
-            <Question
-              question={currentQuestion.question}
-              options={currentQuestion.options}
-              handleAnswer={handleAnswer}
-            />
+            <Row justify="space-between" align="middle" gutter={16}>
+              <Col>
+                <Text strong>Question {currentQuestionIndex + 1}/{questions.length}</Text>
+              </Col>
+              <Divider
+                type="vertical"
+                style={{
+                    height: "100%",
+                    borderColor: "#613f3f",
+                    borderWidth: "2px",
+                  }}              />
+              <Col>
+                <Text strong>Score: {score}</Text>
+              </Col>
+            </Row>
           </Col>
-        ) : (
-          <Col span={24} className="quiz-spinner">
-            <Spin size="large" />
-          </Col>
-        )}
-        {showCorrectAnswerAlert && (
-          <Col span={24} className="quiz-alert">
-            <Alert
-              message={
-                questionAnsweredCorrectly[currentQuestionIndex]
-                  ? "Correct!"
-                  : "Incorrect!"
-              }
-              description={`The correct answer is: ${currentQuestion.correctAnswer}`}
-              type={
-                questionAnsweredCorrectly[currentQuestionIndex]
-                  ? "success"
-                  : "error"
-              }
-              showIcon
-              closable
-              onClose={() => setShowCorrectAnswerAlert(false)}
-            />
-          </Col>
-        )}
-      </Row>
+          {timer === null ? (
+            <Col span={24}>
+              <Question
+                question={currentQuestion.question}
+                options={currentQuestion.options}
+                handleAnswer={handleAnswer}
+              />
+            </Col>
+          ) : (
+            <Col span={24} className="quiz-spinner">
+              <Spin size="large" />
+            </Col>
+          )}
+          {showCorrectAnswerAlert && (
+            <Col span={24} className="quiz-alert">
+              <Alert
+                message={
+                  questionAnsweredCorrectly[currentQuestionIndex]
+                    ? "Correct!"
+                    : "Incorrect!"
+                }
+                description={`The correct answer is: ${currentQuestion.correctAnswer}`}
+                type={
+                  questionAnsweredCorrectly[currentQuestionIndex]
+                    ? "success"
+                    : "error"
+                }
+                showIcon
+                closable
+                onClose={() => setShowCorrectAnswerAlert(false)}
+              />
+            </Col>
+          )}
+        </Row>
+      )}
     </div>
   );
 };
