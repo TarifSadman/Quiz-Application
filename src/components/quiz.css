@@ -1,78 +1,51 @@
-.App {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .Question {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .progress-bar {
-    background-color: #0073e6;
-    height: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .progress-bar-filler {
-    width: 50%;
-    background-color: #4caf50;
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  .quiz-complete-message {
-    font-weight: bold;
-    color: #4caf50;
-    margin-top: 20px;
-  }
-  
-  .next-button {
-    background-color: #0073e6;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  .next-button:hover {
-    background-color: #005bbd;
-  }
+/* quiz.css */
 
-  .App {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%; 
-    transform: translate(-50%, -50%);
-  }
+/* Container for the entire quiz app */
+.quiz-container {
+  background-color: #f7f7f7; /* Background color for the entire app */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header styling */
+.quiz-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Content styling */
+.quiz-content {
+  background-color: #ffffff; /* Background color for the quiz content */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Question spinner styling */
+.quiz-spinner {
+  margin-top: 20px;
+}
+
+/* Alert styling for correct/incorrect answers */
+.quiz-alert {
+  margin-top: 20px;
+}
+
+/* Styling for the title */
+.quiz-header h3 {
+  font-size: 24px;
+  color: #333; /* Title text color */
+}
+
+/* Styling for score and question count text */
+.quiz-content p {
+  font-size: 18px;
+  color: #666; /* Text color for score and question count */
+}
+
+/* Additional styling for question text, options, etc. can be added here */
