@@ -16,6 +16,14 @@ const Quiz = () => {
   const [timer, setTimer] = useState(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
 
+  const shuffleArray = (array) => {
+    return [...array].sort(() => Math.random() - 0.5);
+  };
+
+    questions.forEach((question) => {
+    question.options = shuffleArray(question.options);
+    });
+
   const currentQuestion = questions[currentQuestionIndex];
 
   const handleAnswer = (selectedOption) => {
@@ -47,7 +55,7 @@ const Quiz = () => {
         }
       }
       setTimer(null);
-    }, 2000);
+    }, 1500);
     setTimer(nextQuestionTimer);
   };
 
