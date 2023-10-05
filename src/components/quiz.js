@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Alert, Spin, Row, Col, Typography, Divider } from "antd";
+import { Alert, Spin, Row, Col, Typography, Divider, Button } from "antd";
 import questions from "../data/queses";
 import Question from "./ques";
 import "./quiz.css";
@@ -67,8 +67,20 @@ const Quiz = () => {
     };
   }, [timer]);
 
+  const handleStartOver = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setShowCorrectAnswerAlert(false);
+    setQuestionAnsweredCorrectly(Array(questions.length).fill(false));
+    setTimer(null);
+    setQuizCompleted(false);
+  };
+
   return (
     <div className="quiz-container">
+      <Button type="primary" onClick={handleStartOver} className="start-over-button">
+          Start Over
+      </Button>
       {quizCompleted ? (
         <div className="completion-message">
           <Title level={3}>Quiz Completed!</Title>
