@@ -1,5 +1,8 @@
+/* App.css */
 body {
   margin: 0;
+  padding: 0;
+  background-color: rgba(31, 4, 4, 0.644); /* Replace with your desired RGB color code */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
