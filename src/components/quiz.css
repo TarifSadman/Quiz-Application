@@ -1,9 +1,6 @@
-/* quiz.css */
-
-/* Container for the entire quiz app */
 .quiz-container {
-  background-color: #f7f7f7; /* Background color for the entire app */
-  min-height: calc(100vh - 40px); /* Adjust the value as needed */
+  background-color: #f7f7f7;
+  min-height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,41 +8,52 @@
   padding: 20px;
 }
 
-/* Header styling */
 .quiz-header {
   margin-bottom: 20px;
   text-align: center;
 }
 
-/* Content styling */
 .quiz-content {
-  background-color: #ffffff; /* Background color for the quiz content */
+  background-color: #ffffff; 
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-/* Question spinner styling */
 .quiz-spinner {
   margin-top: 20px;
 }
 
-/* Alert styling for correct/incorrect answers */
 .quiz-alert {
   margin-top: 20px;
 }
 
-/* Styling for the title */
 .quiz-header h3 {
   font-size: 24px;
-  color: #333; /* Title text color */
+  color: #333;
 }
 
-/* Styling for score and question count text */
 .quiz-content p {
   font-size: 18px;
-  color: #666; /* Text color for score and question count */
+  color: #666;
 }
 
-/* Additional styling for question text, options, etc. can be added here */
+.start-over-button {
+  position: fixed;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  right: 20px;
+  z-index: 1000; 
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.start-over-button:hover {
+  background-color: #0056b3;
+}
