@@ -15,7 +15,7 @@ const SignupPage = () => {
     createUserWithEmailAndPassword(auth, email, password) // Use createUserWithEmailAndPassword for sign-up
       .then((userCredential) => {
         alert("Signup Successful");
-        history("/quiz");
+        history("/");
         console.log(userCredential, "userCredential");
       })
       .catch((error) => {
