@@ -16,6 +16,8 @@ const LoginPage = () => {
     .then((userCredential) => {
       console.log(userCredential, "userCredential");
       alert("Login Successful");
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
       history("/quiz");
     })
     .catch((error) => {

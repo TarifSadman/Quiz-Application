@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Alert, Spin, Row, Col, Typography, Divider, Button } from "antd";
 import questions from "../data/queses";
 import Question from "./ques";
 import "./quiz.css";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
 const Quiz = () => {
+  const history = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showCorrectAnswerAlert, setShowCorrectAnswerAlert] = useState(false);
@@ -15,6 +18,13 @@ const Quiz = () => {
   );
   const [timer, setTimer] = useState(null);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [user] = [localStorage.getItem("username"), localStorage.getItem("password")];
+
+  useEffect(() => {
+    if (user === null) {
+      history("/");
+    }
+  }, [user]);
 
   const shuffleArray = (array) => {
     return [...array].sort(() => Math.random() - 0.5);
@@ -76,8 +86,17 @@ const Quiz = () => {
     setQuizCompleted(false);
   };
 
+  const logOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    history("/");
+  }
+
   return (
     <div className="quiz-container">
+      <Button type="default" className="log-out-button" onClick={logOut}>
+        Log Out
+      </Button>
       <Button type="primary" onClick={handleStartOver} className="start-over-button">
           Start Over
       </Button>

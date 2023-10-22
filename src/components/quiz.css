@@ -57,3 +57,24 @@
 .start-over-button:hover {
   background-color: #0056b3;
 }
+
+.log-out-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background-color: #FF0000;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+}
+
+.log-out-button:hover {
+  background-color: #CC0000;
+}
+

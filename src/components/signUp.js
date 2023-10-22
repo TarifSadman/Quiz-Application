@@ -12,7 +12,7 @@ const SignupPage = () => {
 //   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSignup = () => {
-    createUserWithEmailAndPassword(auth, email, password) // Use createUserWithEmailAndPassword for sign-up
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         alert("Signup Successful");
         history("/");
